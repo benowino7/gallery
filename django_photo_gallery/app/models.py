@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 class Album(models.Model):
     title = models.CharField(max_length=60)
     editor = models.ForeignKey(User,on_delete=models.CASCADE)
-    description = models.TextField(max_length=510)
+    description = models.TextField(max_length=700)
     thumb = ProcessedImageField(upload_to='albums', processors=[ResizeToFit(500)], format='JPEG', options={'quality': 90})
     tags = models.CharField(max_length=30)
     is_visible = models.BooleanField(default=True)
