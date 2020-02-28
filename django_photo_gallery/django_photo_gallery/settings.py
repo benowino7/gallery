@@ -1,5 +1,6 @@
 import os
 from decouple import config
+import dj_database_url 
 #import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -11,7 +12,7 @@ SECRET_KEY = '8ace3072-47a0-4910-b522-dc3601f38c35'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','localhost','django-photo-gallery.velingeorgiev.pro']
+ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
 
 INSTALLED_APPS = [
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'registration',
+    'whitenoise.runserver_nostatic'
     ]
 
 SITE_ID = 1
@@ -42,10 +44,13 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'django_photo_gallery.urls'
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 TEMPLATES = [
     {
@@ -154,3 +159,4 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 )
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

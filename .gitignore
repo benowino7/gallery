@@ -7,6 +7,10 @@
 *.userosscache
 *.sln.docstates
 
+SECRET_KEY=’from settings.py file’
+DEBUG= from settings.py file
+DATABASE_URL=’postgresql://localhost/mydatabase?user=mydatabaseuser&password=mypassword’.
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
