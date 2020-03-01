@@ -41,18 +41,6 @@ class AlbumDetail(DetailView):
         context['images'] = AlbumImage.objects.filter(album=self.object.id)
         return context
 
-def search_results(request):
-    
-    if 'album' in request.GET and request.GET["album"]:
-        search_term = request.GET.get("album")
-        searched_albums = Album.search_by_title(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'search.html',{"message":message,"albums": searched_albums})
-
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
 
 
 def handler404(request, exception):

@@ -21,7 +21,6 @@ urlpatterns = [
      url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/login/$', views.LoginView, name='login'),
     url(r'^logout$', views.LogoutView, { 'next_page': '/', }, name='logout'),
-
     # Uncomment the next line to enable the admin:
     url(r'^admin/', admin.site.urls),
 
