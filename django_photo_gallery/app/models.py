@@ -20,7 +20,10 @@ class Album(models.Model):
     slug = models.SlugField(max_length=60, unique=True)
     #def get_absolute_url(self):
     #    return reverse('album', kwargs={'slug':self.slug})
-
+    @classmethod
+    def search_by_title(cls,search_term):
+        app = cls.objects.filter(title__icontains=search_term)
+        return app
     def __unicode__(self):
         return self.title
     
