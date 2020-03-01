@@ -14,6 +14,7 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', app.views.gallery, name='gallery'),
+    url(r'^search/', app.views.search_results, name='search_results'),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/icons/favicon.ico', permanent=True)),
     url(r'^(?P<slug>[-\w]+)$', app.views.AlbumDetail.as_view(), name='album'), #app.views.AlbumView.as_view()
       url(r'^accounts/', include('registration.backends.simple.urls')),
