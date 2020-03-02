@@ -74,12 +74,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_photo_gallery.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'port',
-        'USER': 'moringaschool',
-    'PASSWORD':'100benjail',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
