@@ -1,5 +1,6 @@
 import os
-from decouple import config
+from decouple import config,Csv
+import django_heroku
 import dj_database_url 
 #import posixpath
 
@@ -7,10 +8,11 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'benjail'
+SECRET_KEY = config('benjail')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+MODE=config("MODE", default="dev")
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
@@ -50,6 +52,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'django_photo_gallery.urls'
 db_from_env = dj_database_url.config(conn_max_age=500)
+
+DATABASE_URL=’postgresql://localhost/mydatabase?user=mydatabaseuser&password=mypassword
 
 TEMPLATES = [
     {
