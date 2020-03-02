@@ -2,6 +2,8 @@ import os
 from decouple import config,Csv
 import django_heroku
 import dj_database_url 
+
+db_from_env = dj_database_url.config(conn_max_age=500)
 #import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -53,7 +55,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'django_photo_gallery.urls'
 db_from_env = dj_database_url.config(conn_max_age=500)
 
-DATABASE_URL=’postgresql://localhost/mydatabase?user=mydatabaseuser&password=mypassword
 
 TEMPLATES = [
     {
