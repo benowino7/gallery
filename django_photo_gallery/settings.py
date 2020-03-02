@@ -2,7 +2,6 @@ import os
 from decouple import config
 import dj_database_url 
 
-db_from_env = dj_database_url.config(conn_max_age=500)
 #import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -53,7 +52,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_photo_gallery.urls'
-db_from_env = dj_database_url.config(conn_max_age=500)
 
 
 TEMPLATES = [
@@ -75,17 +73,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_photo_gallery.wsgi.application'
 
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('port'),
-           'USER': config('moringaschool'),
-           'PASSWORD': config('100benjail'),
-           
-       }
-       
-   }
+db_from_env = dj_database_url.config(conn_max_age=500) 
+DATABASES['default'].update(db_from_env)
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
