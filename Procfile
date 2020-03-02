@@ -1,1 +1,1 @@
-web: gunicorn 'django_photo_gallery'.wsgi -k gevent main:app
+web: gunicorn django_photo_gallery --log-file -
