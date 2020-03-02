@@ -1,6 +1,5 @@
 import os
-from decouple import config,Csv
-import django_heroku
+from decouple import config
 import dj_database_url 
 
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -15,6 +14,7 @@ SECRET_KEY = config('benjail')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 MODE=config("MODE", default="dev")
+
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ('0.0.0.0','127.0.0.1','localhost',)
