@@ -74,11 +74,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_photo_gallery.wsgi.application'
 
+
+db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('port'),
+           'USER': config('moringaschool'),
+           'PASSWORD': config('100benjail'),
+           
+       }
+       
+   }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -149,11 +156,7 @@ CACHES = {
     }
 }
 
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
